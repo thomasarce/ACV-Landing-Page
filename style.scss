@@ -19,7 +19,9 @@ body {
     font-size: 15px;
     line-height: 1.4;
 }
-
+main {
+    display:none;
+}
 .container {
     @extend %clearfix;
     width: 100%;
@@ -83,22 +85,16 @@ header {
             width: 100%;
             text-align: center;
 
-            tel {
+            a {
                 font-weight: bold;
                 color: $green;
+                text-decoration: none;
             }
         }
     }
 }
 
-main {
-    width: 100%;
-    margin: auto;
 
-    @media($tablet) {
-        max-width: 960px;
-    }
-}
 
 section.hero {
     @extend %clearfix;
@@ -112,10 +108,10 @@ section.hero {
     @media($tablet) {
         margin: auto;
         padding: 60px 12px;
-        background: url(images/salad.png);
-        background-size: 420px;
+        background: url(images/salad-long.png);
+        background-size: auto 100%;
         background-position-y: 50%;
-        background-position-x: left;
+        background-position-x: calc(50% - 25vw);
         background-repeat: no-repeat;
     }
 
@@ -123,9 +119,9 @@ section.hero {
         margin: auto;
         padding: 60px 12px;
         background: url(images/salad-long.png);
-        background-size: 420px;
+        background-size: auto 100%;
         background-position-y: 50%;
-        background-position-x: calc(50% - 420px);
+        background-position-x: calc(50% - 220px);
         background-repeat: no-repeat;
     }
 
@@ -153,7 +149,7 @@ section.hero {
         @media($tablet) {
             float: left;
             margin-right: 60px;
-            margin-left: calc(50% - 248px);
+            margin-left: calc(50% - 220px);
         }
     }
 
@@ -170,7 +166,7 @@ section.hero {
         font-size: 19px;
         border-radius: 4px;
         margin: auto;
-        letter-spacing: .25px;
+        letter-spacing: .35px;
 
         @media($tablet) {
             width: 320px;
@@ -267,11 +263,18 @@ section.quote {
     background: $green;
     font-size: 16px;
 
-    .quote-small {}
+    .quote-small {
+        @media($tablet) {
+            font-size: 18px;
+            line-height: 1;
+        }
+    }
 
     .quote-large {
         margin-top: 8px;
         font-size: 24px;
+        font-style: italic;
+        //text-decoration: underline
 
         @media($tablet) {
             font-size: 27px;
@@ -304,6 +307,11 @@ section.label {
         color: $green;
         letter-spacing: .25px;
         position: relative;
+
+        span {
+            font-weight: normal;
+            font-style: italic;
+        }
 
         @media($tablet) {
             margin-top: 72px;
@@ -439,6 +447,104 @@ section.testimonials {
 
         .testimonial-author {
             margin-top: 12px;
+        }
+    }
+}
+
+section.sale {
+    @extend %clearfix;
+    
+    display: block;
+    box-sizing: border-box;
+    padding: 24px 24px 56px;
+    .sale-caption {
+        margin-top: 36px;
+        margin-bottom: 0px;
+        @media($tablet) {
+            display: inline-block;
+            width: 40%;
+        }
+    }
+    .sale-header {
+        font-size: 31px;
+        color: $green;
+        line-height: 1.2;
+        font-weight: bold;
+        span {
+            font-weight: normal;
+            font-style: italic;
+        }
+    }
+    .sale-subheader {
+        font-size: 19px;
+        color: rgba(0,0,0,.72);
+    }
+    img {
+        width: 80%;
+        max-width: 220px;
+        display: block;
+        margin-top: 24px;
+        margin-left: calc(50% - 72px);
+        margin-bottom: 24px;
+
+        @media($tablet) {
+            float: left;
+            margin-right: 60px;
+            margin-left: calc(50% - 220px);
+        }
+    }
+    .sale-regprice {
+        font-size: 21px;
+        color: rgba(0,0,0,.36);
+        font-weight: bold;
+        span {
+            text-decoration: line-through;
+        }
+    }
+    .sale-saleprice-caption {
+        font-size: 31px;
+        font-weight: bold;
+        line-height:1.2;
+        letter-spacing: .35px;
+        color:rgba($green,.87);
+        display: inline-block;
+        margin:4px 8px 0 0;
+    }
+    .sale-saleprice-price {
+        font-size: 64px;
+        font-weight: bold;
+        line-height:1.2;
+        letter-spacing: .35px;
+        color:rgba($green,.87);
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 4px;
+        span {
+            font-size: 24px;
+            vertical-align: top;
+            display: inline-block;
+            margin-top: 12px;
+        }
+    }
+    .sale-cta {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        background: $green;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 27px;
+        border-radius: 4px;
+        margin: 24px auto;
+        letter-spacing: .6px;
+
+        @media($tablet) {
+            width: 320px;
+            margin-top: 24px;
+            display: inline-block;
         }
     }
 }
