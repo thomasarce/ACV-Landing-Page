@@ -30,6 +30,7 @@ main {
     margin: auto;
     max-width: 960px;
     display: block;
+    position: relative;
 }
 
 header {
@@ -53,10 +54,15 @@ header {
     }
 
     img.header-logo {
-        margin-top: 4px;
-        width: 132px;
-        max-width: 132px;
+        margin-top: 14px;
+        width: calc(100% - 160px);
         float: left;
+        @media($tablet) {
+            margin-top: 8px;
+            margin-left: 8px;
+            width: 240px;
+            max-width: none;
+        }
     }
 
     .header-cta {
@@ -92,6 +98,10 @@ header {
                 color: $green;
                 text-decoration: none;
             }
+
+            @media($tablet) {
+                font-size: 13px;
+            }
         }
     }
 }
@@ -110,7 +120,7 @@ section.hero {
     @media($tablet) {
         margin: auto;
         padding: 60px 12px;
-        background: url(images/salad-long.png);
+        background: url(//images.botanicchoice.com/acv-lp/salad-long.png);
         background-size: auto 100%;
         background-position-y: 50%;
         background-position-x: calc(50% - 25vw);
@@ -120,7 +130,7 @@ section.hero {
     @media($desktop) {
         margin: auto;
         padding: 120px 12px;
-        background: url(images/salad-long.png);
+        background: url(//images.botanicchoice.com/acv-lp/salad-long.png);
         background-size: auto 100%;
         background-position-y: 50%;
         background-position-x: calc(50% - 220px);
@@ -139,6 +149,7 @@ section.hero {
             width: 50%;
             display: inline-block;
             margin-top: 96px;
+            font-size: 36px;
         }
     }
 
@@ -323,6 +334,27 @@ section.label {
     font-size: 16px;
     position: relative;
 
+    .label-container {
+        @extend %clearfix;
+        width: 100%;
+
+        @media ($tablet) {
+            float: left;
+            width: 40%;
+        }
+    }
+
+    .label-img {
+        width: 80%;
+        display: block;
+        margin: 24px auto;
+
+        @media($tablet) {
+            float:left;
+            width: 70%;
+        }
+    }
+
     .label-title {
         font-size: 28px;
         line-height: 1.2;
@@ -337,10 +369,14 @@ section.label {
         }
 
         @media($tablet) {
-            margin-top: 72px;
-            float: right;
-            width: 55%;
+            margin-top: 0px;
+            float: left;
+            width: 100%;
             zoom: 1.25;
+        }
+
+        @media ($desktop) {
+            //margin-top: 72px;
         }
     }
 
@@ -349,31 +385,29 @@ section.label {
         margin-top: 12px;
 
         @media($tablet) {
-            float: right;
-            width: 55%;
+            float: left;
+            width: 100%;
         }
     }
 
-    .label-img {
-        width: 80%;
-        display: block;
-        margin: 24px auto;
-
-        @media($tablet) {
-            width: 35%;
-        }
-    }
+    
 
     .label-table {
         display: inline-block;
         width: 100%;
+        margin-top: 48px;
+        @media ($tablet) {
+            width: 50%;
+            float: right;
+            margin-top: 0;
+        }
 
         .label-table-header {
             @extend %clearfix;
             font-weight: bold;
             padding: 6px 0;
             box-sizing: border-box;
-            border-bottom: 4px solid rgba(0, 0, 0, .72);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.24);
 
             span:nth-of-type(1) {
                 float: left;
@@ -474,9 +508,94 @@ section.testimonials {
     }
 }
 
+
+section.beach {
+    width: 100%;
+    display: block;
+    margin: 48px auto 0;
+    padding: 12px;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .8);
+
+    .beach-caption {
+        font-size: 31px;
+        line-height: 1.2;
+        color: $green;
+        padding-left: 16px;
+        white-space: nowrap;
+
+        .beach-top {}
+
+        .beach-med {
+            text-indent: 28px;
+
+        }
+
+        .beach-med-italic {
+            font-size: 37px;
+            text-indent: 28px;
+            font-style: italic;
+        }
+
+        .beach-bottom {
+            text-indent: 92px;
+            font-style: italic;
+            font-size: 36px;
+        }
+
+        @media($tablet) {
+            display: inline-block;
+            width: 50%;
+            zoom: 1.25;
+            padding-left: 24px;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+    }
+
+    img.beach-img {
+        width: 100%;
+        display: block;
+
+        @media($tablet) {
+            float: right;
+            width: 50%;
+            margin-top:-36px;
+        }
+    }
+
+    .beach-list {
+        display: block;
+        box-sizing: border-box;
+        padding: 12px;
+        line-height: 1.6;
+        font-size: 16px;
+
+        @media($tablet) {
+            display: inline-block;
+            width: 50%;
+            margin-top: 36px;
+        }
+
+        .beach-list-item {
+            display: block;
+            box-sizing: border-box;
+            padding: 12px;
+            border-top: 1px solid rgba(0, 0, 0, .12);
+
+            &:nth-of-type(1) {
+                border: none;
+                font-size: 18px;
+                padding: 8px 20px;
+                line-height: 1.8;
+            }
+        }
+    }
+}
+
 section.slider {
     @extend %clearfix;
-    background: rgba(0, 0, 0, .08);
+    background: rgba(0, 0, 0, .04);
     width: 100%;
     display: block;
     margin: 48px auto 0;
@@ -484,6 +603,26 @@ section.slider {
     box-sizing: border-box;
     color: rgba(0, 0, 0, .72);
     font-size: 16px;
+
+    .slider-control-left {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        font-size: 48px;
+        padding: 48px 48px 48px 0;
+        cursor: pointer;
+    }
+
+    .slider-control-right {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        font-size: 48px;
+        padding: 48px 0 48px 48px;
+        cursor: pointer;
+    }
 
     .slider-header {
         font-size: 37px;
@@ -499,8 +638,11 @@ section.slider {
 
     .slider-icons {
         @extend %clearfix;
+        max-width: 720px;
+        margin: auto;
         .slider-icon {
             display: none;
+            cursor: pointer;
 
             .slider-icon-caption {
                 display: none
@@ -543,14 +685,14 @@ section.slider {
                     opacity: 1;
 
                     img {
-                        width: 96px;
+                        width: 72px;
                         display: block;
                         margin: 16px auto 0;
                     }
                 }
 
                 img {
-                    width: 96px;
+                    width: 72px;
                     display: block;
                     margin: 16px auto 0;
                 }
@@ -569,22 +711,31 @@ section.slider {
     }
 
     .slider-copy {
+        height: 136px;
+        margin: 12px 0 24px;
         p {
-            display: none;
+            display: block;
+            position: absolute;
+            margin: 8px 0 24px;
+            font-size: 19px;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            transition: all 200ms;
+            color: rgba(0,0,0,.7);
 
             &.active {
-                display: block;
-                margin: 8px 0 24px;
-                font-size: 19px;
-                line-height: 1.6;
-                text-align: center;
+                opacity: 1;
+                transition: all 200ms;
+            }
 
-                @media ($tablet) {
-                    font-size: 27px;
-                    font-weight: 100;
-                    opacity: .72;
-                    margin: 48px 0 24px;
-                }
+            @media ($tablet) {
+                font-size: 27px;
+                font-weight: 100;
+                margin-top: 36px;
+                width: 80%;
+                left: 50%;
+                margin-left: calc(-40%);
             }
         }
     }
@@ -596,7 +747,7 @@ section.sale {
 
     display: block;
     box-sizing: border-box;
-    padding: 24px 24px 56px;
+    padding: 56px 24px 56px;
 
     .sale-caption {
         margin-top: 36px;
@@ -612,7 +763,7 @@ section.sale {
         font-size: 31px;
         color: $green;
         line-height: 1.2;
-        font-style: italic;
+        font-style: normal;
 
         //font-weight: bold;
         span {
@@ -637,7 +788,9 @@ section.sale {
         @media($tablet) {
             float: left;
             margin-right: 60px;
-            margin-left: calc(50% - 220px);
+            margin-left: calc(50% - 268px);
+            height: 236px;
+            width: auto;
         }
     }
 
@@ -672,10 +825,11 @@ section.sale {
         margin-top: 4px;
 
         span {
-            font-size: 24px;
+            font-size: 32px;
             vertical-align: top;
             display: inline-block;
-            margin-top: 12px;
+            margin-top: 6px;
+            margin-left: 4px;
         }
     }
 
@@ -685,7 +839,7 @@ section.sale {
         width: 100%;
         text-align: center;
         padding: 12px;
-        background: $green;
+        background: #ff550b;
         color: white;
         text-decoration: none;
         font-weight: bold;
@@ -699,5 +853,51 @@ section.sale {
             margin-top: 24px;
             display: inline-block;
         }
+    }
+}
+
+section.gaurantee {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 48px;
+    box-sizing: border-box;
+    color: white;
+    background: rgba($green, .87);
+    font-size: 16px;
+
+    .gaurantee-small {
+        @media($tablet) {
+            font-size: 21px;
+            line-height: 1.6;
+            text-align: center;
+        }
+    }
+
+    .gaurantee-large {
+        margin-bottom: 8px;
+        font-size: 24px;
+        font-weight: bold;
+        //text-decoration: underline
+
+        @media($tablet) {
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+}
+section.info {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 36px;
+    box-sizing: border-box;
+    color: rgba(0,0,0,.72);
+    background: rgba(0,0,0, .04);
+
+    .info-small {
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: left;
     }
 }
